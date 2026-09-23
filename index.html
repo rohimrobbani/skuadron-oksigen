@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="id"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260923-01-496072e","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/83d6dfdadcd4750a.telemetry_sdk.js" integrity="sha512-XS4Dvzp6vbagZS9vFErihvr8aO3S0tH78KWUefn06fmL4WYqryBtZj/IOLITYj7dFA4gPVvPg1W/JB1DK3uLNQ=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Skuadron Oksigen</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <style>
+:root {
+  --primary: #00bcd4; --secondary: #ff9800; --bg: #e0f7fa;
+  --text-dark: #263238; --text-light: #ffffff;
+  --correct: #4caf50; --wrong: #f44336;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; }
+body {
+  font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg); color: var(--text-dark);
+  overflow: hidden; width: 100vw; height: calc(100 * min(var(--vh, 1vh), 1vh)); touch-action: none;
+}
+
+.screen {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #81d4fa 0%, #29b6f6 100%);
+  opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 10;
+}
+.screen.active { opacity: 1; pointer-events: auto; }
+
+h1 { font-size: 3rem; color: #fff; text-shadow: 2px 2px 0px #0277bd, 4px 4px 0px rgba(0,0,0,0.2); text-align: center; margin-bottom: 5px; line-height: 1.1; }
+h2 { font-size: 1.5rem; color: #fff; margin-bottom: 20px; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+h3 { font-size: 1.2rem; color: #0277bd; margin-bottom: 10px; }
+
+.btn {
+  background: var(--secondary); color: #fff; border: 3px solid #fff; border-radius: 30px;
+  padding: 12px 24px; font-size: 1.2rem; font-weight: bold; cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: transform 0.1s, background 0.2s;
+  margin: 10px; display: inline-block; text-align: center; text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn:active { transform: scale(0.95); }
+.btn:hover { background: #fb8c00; }
+.btn.small { padding: 8px 16px; font-size: 1rem; border-width: 2px; margin: 5px; }
+
+#menu-content, .menu-content-panel {
+  background: rgba(255,255,255,0.9); padding: 30px; border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-align: center; max-width: 90%; max-height: 90%; overflow-y: auto;
+}
+.creator { margin-top: 15px; padding: 10px 16px; border-radius: 12px; background: rgba(255,255,255,0.82); border: 2px solid rgba(2,119,189,0.25); box-shadow: 0 4px 10px rgba(0,0,0,0.12); font-size: 0.9rem; font-weight: bold; color: #546e7a; }
+.mode-grid { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.top-right { position: fixed; top: 10px; right: 10px; z-index: 50; display: flex; gap: 5px; }
+
+#game-screen { background: #000; z-index: 5; }
+#game-grid { display: grid; width: 100%; height: 100%; gap: 2px; background: #333; }
+.game-cell { position: relative; background: #81d4fa; overflow: hidden; }
+canvas { display: block; width: 100%; height: 100%; }
+
+.hud { position: absolute; top: 10px; left: 10px; color: #fff; text-shadow: 1px 1px 2px #000; font-weight: bold; pointer-events: none; z-index: 2; font-size: 1rem; line-height: 1.3; }
+
+.question-overlay {
+  position: absolute; top: 10%; left: 5%; width: 90%; background: rgba(0,0,0,0.85);
+  color: #fff; padding: 20px; border-radius: 15px; border: 3px solid var(--secondary);
+  text-align: center; display: none; z-index: 30; box-shadow: 0 5px 25px rgba(0,0,0,0.8);
+  font-family: inherit;
+}
+.q-instruction { font-size: 1rem; color: #ffeb3b; margin-bottom: 15px; font-weight: bold; animation: pulse 1s infinite alternate; }
+@keyframes pulse { from { opacity: 0.7; } to { opacity: 1; } }
+.q-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+.q-btn { 
+  background: #0277bd; color: #fff; border: 2px solid #81d4fa; padding: 15px; 
+  border-radius: 10px; font-size: 1rem; font-weight: bold; cursor: pointer; 
+  transition: all 0.2s; text-align: left; font-family: 'DM Sans', sans-serif;
+}
+.q-btn:hover { background: #01579b; border-color: #fff; }
+.q-btn:active { transform: scale(0.95); }
+
+.q-timer { font-size: 2.5rem; font-weight: bold; color: #ff5252; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+.q-timer.warning { animation: pulse-fast 0.5s infinite alternate; }
+@keyframes pulse-fast { from { opacity: 0.5; color: #ff5252; transform: scale(1); } to { opacity: 1; color: #ff1744; transform: scale(1.2); } }
+
+.feedback-overlay {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(255,255,255,0.95); padding: 20px; border-radius: 15px;
+  text-align: center; display: none; z-index: 40; width: 80%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 4px solid var(--correct);
+}
+.feedback-overlay.wrong { border-color: var(--wrong); }
+.feedback-title { font-size: 2rem; font-weight: bold; margin-bottom: 10px; }
+.feedback-overlay.correct .feedback-title { color: var(--correct); }
+.feedback-overlay.wrong .feedback-title { color: var(--wrong); }
+.feedback-text { font-size: 1.1rem; color: #333; }
+
+#touch-controls { position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; pointer-events: none; z-index: 20; display: none; }
+.joystick-area { position: absolute; bottom: 20px; left: 20px; width: 120px; height: 120px; background: rgba(255,255,255,0.2); border-radius: 50%; pointer-events: auto; border: 2px solid rgba(255,255,255,0.5); }
+.joystick-knob { position: absolute; top: 30px; left: 30px; width: 60px; height: 60px; background: rgba(255,255,255,0.8); border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.3); pointer-events: none; }
+.action-btn { position: absolute; bottom: 30px; right: 30px; width: 80px; height: 80px; background: rgba(255,152,0,0.7); border: 3px solid #fff; border-radius: 50%; color: #fff; font-size: 1.5rem; font-weight: bold; pointer-events: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-family: 'DM Sans', sans-serif; }
+.action-btn:active { background: rgba(255,152,0,0.9); transform: scale(0.9); }
+
+.settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: left; font-size: 1rem; }
+.settings-grid label { font-weight: bold; }
+.settings-grid select, .settings-grid input { width: 100%; padding: 5px; border-radius: 5px; font-family: 'DM Sans', sans-serif; }
+
+#pilot-name-form { background: rgba(255,255,255,0.94); padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-align: center; max-width: 90%; width: 420px; }
+#pilot-name-form label { display: block; text-align: left; font-weight: 700; color: #263238; margin: 12px 10px 5px; }
+#pilot-name-form input { width: 100%; padding: 12px 14px; border: 2px solid #81d4fa; border-radius: 10px; font: inherit; color: #263238; user-select: text; -webkit-user-select: text; }
+#pilot-name-form input:focus { outline: 3px solid rgba(0,188,212,0.35); border-color: #00bcd4; }
+@media (orientation: portrait) {
+  #touch-controls { height: 30%; }
+  .joystick-area { width: 100px; height: 100px; bottom: 10px; left: 10px; }
+  .joystick-knob { width: 50px; height: 50px; top: 25px; left: 25px; }
+  .action-btn { width: 70px; height: 70px; bottom: 25px; right: 10px; }
+  .q-options { grid-template-columns: 1fr; gap: 10px; }
+}
+</style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/8de366929c5f3b48.data_sdk.js" type="text/javascript" integrity="sha512-TyQ8k8cZj66xe/aENmn6RyZpdOFZXbAo5+KBG3PeFM+Q4qMTHU8xAqmq4ADClNfPrstgQYV6OzZHwLTnElzB2g=="></script>
+  <script src="/_sdk/94916171342f3214.editing_sdk.js" type="text/javascript" integrity="sha512-iD6yxTksfey/7N3Df0f52UtQsuvEgQYXQKioLwfyua/wCe7br8wUuc/pDNnGdXhJ/6CJKJ9sPcWHBNlAjOMhEQ=="></script>
+  <script src="/_sdk/765e1fea0cec97ce.resizing_sdk.js" type="text/javascript" integrity="sha512-IRTJnqww0+HQ5V/LlWEQrlD5SrYHaVvaeVoNe8HYQXoaguzUGheSd9+n9s6WOgaTcEH0g37DuINHZ9aqfzWjlw=="></script>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(224, 247, 250);">
+  <div class="top-right"><button class="btn small" title="Petunjuk" onclick="showScreen('screen-help')">ℹ️</button> <button class="btn small" title="Sound On/Off" id="btn-sound" onclick="toggleSound()">🔊</button> <button class="btn small" title="Fullscreen" onclick="toggleFullScreen()">⛶</button> <button class="btn small" title="Keluar ke Tampilan Awal" id="btn-home" style="display:none;" onclick="returnToStartScreen()">🏠</button> <button class="btn small" title="Pause" id="btn-pause" style="display:none;" onclick="togglePause()">⏸</button>
+  </div>
+  <div id="screen-start" class="screen active" data-template-id="start-screen" style="background: linear-gradient(135deg, rgb(129, 212, 250), rgb(41, 182, 246));">
+   <div style="width:150px; height:150px; margin-bottom:12px;"><img data-template-id="start-screen-logo" class="canva-image" loading="lazy" style="width:100%; height:100%; object-fit:contain;" src="https://imgur.com/3vecmaz.png" alt="Logo Yayasan Pesantren Islam Al Azhar">
+   </div><img data-template-id="start-screen-fighter-plane" class="canva-image" loading="lazy" style="width:320px; height:180px; margin-bottom:14px; object-fit:contain;" src="https://imgur.com/fWZjiuz.png" alt="Pesawat jet futuristik berwarna putih dan biru dengan simbol oksigen.">
+   <h1 data-template-id="game-title" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 900; font-style: normal; font-size: 48px;">SKUADRON OKSIGEN</h1>
+   <h2 data-template-id="game-subtitle" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 24px;">Terbang, Lawan Polusi, dan Kuasai Sistem Pernapasan Manusia!</h2><button class="btn canva-button" data-template-id="start-btn" onclick="showScreen('screen-menu')" style="background: rgb(255, 152, 0); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">▶ MULAI MISI</button>
+   <div class="creator" data-template-id="creator-text" style="background: rgba(255, 255, 255, 0.82); color: rgb(0, 0, 0); font-weight: 700; font-style: normal; font-size: 15px;">Dibuat oleh: Abdur Rahim, S.Pd.I
+Guru SDI Al Azhar 23 Jatikramat</div>
+  </div>
+  <div id="screen-menu" class="screen">
+   <div class="menu-content-panel">
+    <h3 data-template-id="menu-title" class="canva-text" style="color: rgb(2, 119, 189); font-weight: 700; font-style: normal; font-size: 19px;">PILIH MODE</h3>
+    <div class="mode-grid"><button class="btn canva-button" data-template-id="btn-solo" onclick="startGame(1)" style="background: rgb(67, 160, 71); color: rgb(255, 255, 255);"><span data-template-id="btn-solo-text" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">✈ SOLO
+1 Pilot</span></button> <button class="btn canva-button" data-template-id="btn-duel" onclick="startGame(2)" style="background: rgb(229, 57, 53); color: rgb(255, 255, 255);"><span data-template-id="btn-duel-text" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">✈✈ DUEL
+2 Pilot</span></button>
+    </div>
+    <hr style="margin:20px 0; border:1px solid #ccc;"><button class="btn small canva-button" data-template-id="btn-settings" onclick="showSettings('menu')" style="background: rgb(67, 160, 71); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">⚙ Pengaturan</button> <button class="btn small canva-button" data-template-id="btn-help-menu" onclick="showScreen('screen-help')" style="background: rgb(229, 57, 53); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">ℹ️ Petunjuk</button>
+   </div>
+  </div>
+  <div id="screen-help" class="screen">
+   <div class="menu-content-panel" style="max-width: 600px;">
+    <h2 data-template-id="help-title" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 24px;">PETUNJUK BERMAIN</h2>
+    <div style="text-align: left; margin: 20px 0; font-size: 1.1rem; line-height: 1.6;">
+     <ul>
+      <li style="margin-bottom: 10px; color: rgb(38, 50, 56); font-weight: 400; font-style: normal; font-size: 16px;" data-template-id="help-item-1" class="canva-text">Kendalikan Pesawat: Gunakan Virtual Joystick (HP) atau tombol W,A,S,D / Panah (PC) untuk bermanuver.</li>
+      <li style="margin-bottom: 10px; color: rgb(38, 50, 56); font-weight: 400; font-style: normal; font-size: 16px;" data-template-id="help-item-2" class="canva-text">Menembak: Tekan tombol 🔥 (HP) atau Spasi/Enter (PC) untuk menghancurkan virus polusi.</li>
+      <li style="margin-bottom: 10px; color: rgb(38, 50, 56); font-weight: 400; font-style: normal; font-size: 16px;" data-template-id="help-item-3" class="canva-text">Power-Up Senjata (P): Musuh yang hancur terkadang menjatuhkan item P. Ambil untuk meningkatkan daya sebar tembakan pesawat!</li>
+      <li style="margin-bottom: 10px; color: rgb(38, 50, 56); font-weight: 400; font-style: normal; font-size: 16px;" data-template-id="help-item-4" class="canva-text">Mode Soal (Jeda): Saat indikator Misi penuh, game akan terjeda otomatis dan soal pilihan ganda tentang Sistem Pernapasan akan muncul.</li>
+      <li style="margin-bottom: 10px; color: rgb(38, 50, 56); font-weight: 400; font-style: normal; font-size: 16px;" data-template-id="help-item-5" class="canva-text">Menjawab: Pilih opsi jawaban yang benar untuk melanjutkan misi penerbangan!</li>
+     </ul>
+    </div><button class="btn canva-button" data-template-id="btn-help-back" onclick="closeHelp()" style="background: rgb(255, 152, 0); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Mengerti &amp; Kembali</button>
+   </div>
+  </div>
+  <div id="screen-settings" class="screen">
+   <div class="menu-content-panel">
+    <h3 data-template-id="settings-title" class="canva-text" style="color: rgb(2, 119, 189); font-weight: 700; font-style: normal; font-size: 19px;">PENGATURAN</h3>
+    <div class="settings-grid"><label data-template-id="label-difficulty" class="canva-text" style="color: rgb(38, 50, 56); font-weight: 700; font-style: normal; font-size: 16px;">Tingkat Kesulitan:</label> <select id="cfg-diff"><option value="easy">Mudah</option><option value="normal" selected="">Normal</option><option value="hard">Sulit</option></select> <label data-template-id="label-autofire" class="canva-text" style="color: rgb(38, 50, 56); font-weight: 700; font-style: normal; font-size: 16px;">Tembak Otomatis (P1):</label> <select id="cfg-auto"><option value="true" selected="">ON</option><option value="false">OFF</option></select> <label data-template-id="label-maxq" class="canva-text" style="color: rgb(38, 50, 56); font-weight: 700; font-style: normal; font-size: 16px;">Maksimal Soal:</label> <select id="cfg-qnum"><option value="10">10</option><option value="20">20</option><option value="30" selected="">30</option></select> <label data-template-id="label-qduration" class="canva-text" style="color: rgb(38, 50, 56); font-weight: 700; font-style: normal; font-size: 16px;">Durasi Soal (Detik):</label> <select id="cfg-qtimer"><option value="10">10</option><option value="15" selected="">15</option><option value="20">20</option></select>
+    </div><button class="btn canva-button" style="margin-top: 20px; background: rgb(255, 152, 0); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;" data-template-id="btn-save-settings" onclick="saveSettings()">SIMPAN &amp; KEMBALI</button>
+   </div>
+  </div>
+  <div id="screen-names" class="screen">
+   <form id="pilot-name-form" onsubmit="beginNamedGame(event)">
+    <h3 data-template-id="pilot-name-title" class="canva-text" style="color: rgb(2, 119, 189); font-weight: 700; font-style: normal; font-size: 24px;">MASUKKAN NAMA PILOT / TIM</h3><label data-template-id="pilot-one-label" class="canva-text" for="pilot-one-name" style="color: rgb(38, 50, 56); font-weight: 700; font-style: normal; font-size: 16px;">Nama Pilot / Tim:</label> <input id="pilot-one-name" data-template-id="pilot-one-input" class="canva-input" type="text" maxlength="24" autocomplete="off" placeholder="Contoh: Tim Oksigen" style="color: rgb(38, 50, 56); font-weight: 400; font-style: normal; font-size: 16px;">
+    <div id="pilot-two-fields" style="display:none;">
+     <label data-template-id="pilot-two-label" class="canva-text" for="pilot-two-name" style="color: rgb(38, 50, 56); font-weight: 700; font-style: normal; font-size: 16px;">Nama Pilot 2:</label> <input id="pilot-two-name" data-template-id="pilot-two-input" class="canva-input" type="text" maxlength="24" autocomplete="off" placeholder="Contoh: Pilot 2" style="color: rgb(38, 50, 56); font-weight: 400; font-style: normal; font-size: 16px;">
+    </div><button class="btn canva-button" data-template-id="btn-start-named" type="submit" style="background: rgb(255, 152, 0); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">MULAI MISI</button> <button class="btn small canva-button" data-template-id="btn-name-back" type="button" onclick="showScreen('screen-menu')" style="background: rgb(255, 152, 0); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">KEMBALI</button>
+   </form>
+  </div>
+  <div id="screen-game" class="screen">
+   <div id="game-grid"></div>
+   <div id="touch-controls">
+    <div class="joystick-area" id="joy-area">
+     <div class="joystick-knob" id="joy-knob"></div>
+    </div><button class="action-btn" id="btn-fire">🔥</button>
+   </div>
+  </div>
+  <div id="screen-pause" class="screen" style="background:rgba(0,0,0,0.8); z-index:60;">
+   <h1 data-template-id="pause-title" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 900; font-style: normal; font-size: 48px;">GAME DIJEDA</h1><button class="btn canva-button" data-template-id="btn-resume" onclick="togglePause()" style="background: rgb(255, 152, 0); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">▶ Lanjutkan</button> <button class="btn canva-button" data-template-id="btn-pause-settings" onclick="showSettings('pause')" style="background: rgb(255, 152, 0); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">⚙ Pengaturan</button> <button class="btn canva-button" data-template-id="btn-pause-exit" onclick="returnToStartScreen()" style="background: rgb(255, 152, 0); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">🏠 Keluar ke Tampilan Awal</button>
+  </div>
+  <div id="screen-report" class="screen">
+   <div class="menu-content-panel" style="max-width: 600px;">
+    <h2 data-template-id="report-title" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 24px;">MISSION REPORT</h2>
+    <div id="report-stats" style="font-size:1.2rem; line-height:1.6; margin-bottom:20px; max-height:40vh; overflow-y:auto;"></div><button class="btn canva-button" data-template-id="btn-report-back" onclick="showScreen('screen-start')" style="background: rgb(255, 152, 0); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">🏠 KEMBALI KE TAMPILAN AWAL</button>
+   </div>
+  </div>
+  <script>
+const RAW_QUESTIONS = [
+  ["Tempat pertukaran oksigen dan karbon dioksida terjadi pada...", ["Alveolus", "Trakea", "Hidung", "Bronkus"], 0, "Alveolus adalah gelembung halus di paru-paru tempat pertukaran gas.", 3],
+  ["Rambut hidung dan selaput lendir berfungsi untuk...", ["Menyaring debu", "Mengikat oksigen", "Memompa darah", "Menghasilkan suara"], 0, "Rambut hidung menyaring kotoran dan debu dari udara yang dihirup.", 1],
+  ["Organ pernapasan yang merupakan persimpangan rongga mulut dan hidung adalah...", ["Faring", "Laring", "Bronkus", "Alveolus"], 0, "Faring (tekak) adalah pertemuan saluran pernapasan dan pencernaan.", 1],
+  ["Pangkal tenggorokan yang terdapat pita suara disebut...", ["Laring", "Trakea", "Bronkiolus", "Paru-paru"], 0, "Laring mengandung pita suara yang bergetar saat kita berbicara.", 1],
+  ["Saluran pernapasan yang tersusun atas cincin tulang rawan adalah...", ["Trakea", "Faring", "Alveolus", "Diafragma"], 0, "Trakea (batang tenggorokan) ditopang oleh cincin tulang rawan agar tetap terbuka.", 1],
+  ["Cabang dari trakea yang menuju paru-paru kanan dan kiri disebut...", ["Bronkus", "Bronkiolus", "Alveolus", "Faring"], 0, "Bronkus menghubungkan batang tenggorokan dengan paru-paru.", 2],
+  ["Cabang-cabang kecil dari bronkus di dalam paru-paru disebut...", ["Bronkiolus", "Trakea", "Laring", "Diafragma"], 0, "Bronkiolus adalah cabang kecil yang menyalurkan udara ke alveolus.", 2],
+  ["Paru-paru manusia dilindungi oleh selaput tipis yang disebut...", ["Pleura", "Diafragma", "Epiglotis", "Lendir"], 0, "Pleura melindungi paru-paru dari gesekan saat bernapas.", 2],
+  ["Otot utama yang berperan dalam pernapasan perut adalah...", ["Diafragma", "Otot dada", "Otot leher", "Otot jantung"], 0, "Diafragma adalah sekat antara rongga dada dan perut yang mengatur tekanan.", 4],
+  ["Proses menghirup udara (oksigen) ke dalam tubuh disebut...", ["Inspirasi", "Ekspirasi", "Pencernaan", "Sirkulasi"], 0, "Inspirasi terjadi saat rongga dada membesar dan udara masuk.", 4],
+  ["Proses menghembuskan udara (karbon dioksida) keluar disebut...", ["Ekspirasi", "Inspirasi", "Sekresi", "Ekskresi"], 0, "Ekspirasi terjadi saat rongga dada mengecil dan udara terdorong keluar.", 4],
+  ["Gas yang dibutuhkan tubuh manusia untuk pernapasan adalah...", ["Oksigen", "Karbon Dioksida", "Nitrogen", "Helium"], 0, "Oksigen sangat penting untuk menghasilkan energi di dalam sel tubuh.", 3],
+  ["Gas sisa yang dikeluarkan tubuh saat menghembuskan napas adalah...", ["Karbon Dioksida", "Oksigen", "Ozon", "Hidrogen"], 0, "Karbon dioksida adalah gas sisa metabolisme yang harus dibuang.", 3],
+  ["Penyakit peradangan pada cabang tenggorokan disebut...", ["Bronkitis", "Asma", "TBC", "Flu"], 0, "Bronkitis adalah peradangan pada selaput lendir bronkus.", 5],
+  ["Penyempitan saluran pernapasan yang menyebabkan sesak napas disebut...", ["Asma", "Influenza", "Bronkitis", "TBC"], 0, "Asma sering dipicu oleh alergi udara dingin, debu, atau bulu.", 5],
+  ["Salah satu zat berbahaya dalam asap rokok yang merusak paru-paru adalah...", ["Nikotin", "Oksigen", "Vitamin C", "Kalsium"], 0, "Nikotin dan tar pada rokok sangat merusak organ pernapasan.", 5],
+  ["Cara yang baik untuk menjaga kesehatan sistem pernapasan adalah...", ["Rutin olahraga", "Sering begadang", "Merokok", "Berada di tempat berdebu"], 0, "Olahraga melatih kapasitas paru-paru dan melancarkan sirkulasi udara.", 5],
+  ["Jika berada di lingkungan yang banyak asap atau debu, kita sebaiknya menggunakan...", ["Masker", "Kacamata", "Topi", "Sarung tangan"], 0, "Masker menyaring polusi agar tidak masuk ke saluran pernapasan.", 5],
+  ["Penghangat dan pelembap udara yang masuk terjadi di...", ["Rongga Hidung", "Alveolus", "Bronkus", "Paru-paru"], 0, "Pembuluh darah dan lendir di hidung menghangatkan dan melembapkan udara.", 1],
+  ["Katup yang mencegah makanan masuk ke saluran pernapasan disebut...", ["Epiglotis", "Pleura", "Diafragma", "Laring"], 0, "Epiglotis menutup tenggorokan saat kita menelan makanan.", 1],
+  ["Berapa jumlah lobus pada paru-paru kanan manusia?", ["Tiga", "Dua", "Empat", "Satu"], 0, "Paru-paru kanan lebih besar dan memiliki tiga lobus (gelambir).", 2],
+  ["Berapa jumlah lobus pada paru-paru kiri manusia?", ["Dua", "Tiga", "Empat", "Satu"], 0, "Paru-paru kiri memiliki dua lobus untuk memberi ruang bagi jantung.", 2],
+  ["Penyakit menular yang disebabkan oleh bakteri Mycobacterium tuberculosis adalah...", ["TBC", "Asma", "Flu", "Bronkitis"], 0, "TBC menyerang paru-paru dan menular melalui udara.", 5],
+  ["Tumbuhan membantu sistem pernapasan manusia karena menghasilkan...", ["Oksigen", "Karbon Dioksida", "Racun", "Debu"], 0, "Tumbuhan melakukan fotosintesis yang melepaskan oksigen segar.", 5],
+  ["Menjaga kebersihan lingkungan rumah penting untuk mencegah penyakit...", ["Pernapasan", "Kulit", "Pencernaan", "Tulang"], 0, "Udara bersih tanpa debu menjaga kesehatan sistem pernapasan.", 5],
+  ["Saat diafragma berkontraksi (mendatar), apa yang terjadi?", ["Udara masuk", "Udara keluar", "Paru-paru mengecil", "Perut mengempis"], 0, "Diafragma mendatar membuat rongga dada membesar sehingga udara masuk.", 4],
+  ["Saat diafragma berelaksasi (melengkung), apa yang terjadi?", ["Udara keluar", "Udara masuk", "Dada membesar", "Paru-paru mengembang"], 0, "Diafragma melengkung menekan paru-paru sehingga udara keluar.", 4],
+  ["Zat warna merah darah yang mengikat oksigen disebut...", ["Hemoglobin", "Plasma", "Trombosit", "Leukosit"], 0, "Hemoglobin dalam sel darah merah berfungsi mengangkut oksigen ke seluruh tubuh.", 3],
+  ["Gejala penyakit influenza meliputi...", ["Hidung tersumbat dan demam", "Sakit perut hebat", "Tulang keropos", "Mata merah berair"], 0, "Influenza disebabkan virus yang menyerang saluran pernapasan.", 5],
+  ["Pohon-pohon di pinggir jalan kota berfungsi untuk...", ["Menyerap polusi udara", "Memperindah bangunan", "Tempat burung", "Membuat macet"], 0, "Daun pohon dapat menyerap debu dan polutan karbon dioksida.", 5]
+];
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function getQuestionBank(limit) {
+  let bank = RAW_QUESTIONS.map(q => {
+    let opts = [...q[1]];
+    let correctStr = opts[q[2]];
+    shuffle(opts);
+    let correctIdx = opts.indexOf(correctStr);
+    return { q: q[0], options: opts, correct: correctIdx, exp: q[3], level: q[4] };
+  });
+  shuffle(bank);
+  return bank.slice(0, limit);
+}
+
+let CONFIG = {
+  difficulty: 'normal', autoFire: true, maxQuestions: 30, qDuration: 15,
+  sfxVol: 0.5, bgmVol: 0.3, isMobile: ('ontouchstart' in window)
+};
+let gameState = {
+  mode: 1, players: [], isPaused: false, animationFrame: null, lastTime: 0
+};
+let audioCtx = null;
+let isMuted = false;
+let settingsContext = 'menu';
+
+function initAudio() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+}
+
+function toggleSound() {
+  isMuted = !isMuted;
+  document.getElementById('btn-sound').innerText = isMuted ? '🔇' : '🔊';
+}
+
+function playTone(freq, type, duration, volScale=1) {
+  if (isMuted || !audioCtx) return;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = type; osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+  gain.gain.setValueAtTime(CONFIG.sfxVol * volScale, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+  osc.connect(gain); gain.connect(audioCtx.destination);
+  osc.start(); osc.stop(audioCtx.currentTime + duration);
+}
+
+const SFX = {
+  shoot: () => playTone(600, 'square', 0.1, 0.2),
+  hit: () => playTone(150, 'sawtooth', 0.2, 0.5),
+  boom: () => playTone(100, 'square', 0.5, 0.8),
+  correct: () => { playTone(523, 'sine', 0.1); setTimeout(()=>playTone(659, 'sine', 0.1), 100); setTimeout(()=>playTone(783, 'sine', 0.3), 200); },
+  wrong: () => { playTone(300, 'sawtooth', 0.2); setTimeout(()=>playTone(250, 'sawtooth', 0.4), 200); },
+  powerup: () => { playTone(440, 'sine', 0.1); setTimeout(()=>playTone(880, 'sine', 0.2), 100); }
+};
+
+const GFX = {
+  plane: (ctx, x, y, w, h, color, engineGlow) => {
+    ctx.save(); ctx.translate(x, y);
+    if (engineGlow) { ctx.fillStyle = 'rgba(255,165,0,0.8)'; ctx.beginPath(); ctx.arc(w/2, h, w/4 + Math.random()*2, 0, Math.PI*2); ctx.fill(); }
+    ctx.fillStyle = '#ccc'; ctx.beginPath(); ctx.moveTo(w/2, h/4); ctx.lineTo(w, h*0.7); ctx.lineTo(0, h*0.7); ctx.fill();
+    ctx.fillStyle = color; ctx.beginPath(); ctx.moveTo(w/2, 0); ctx.lineTo(w*0.7, h/2); ctx.lineTo(w*0.6, h); ctx.lineTo(w*0.4, h); ctx.lineTo(w*0.3, h/2); ctx.fill();
+    ctx.fillStyle = '#81d4fa'; ctx.beginPath(); ctx.ellipse(w/2, h*0.3, w*0.15, h*0.2, 0, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  },
+  enemyPlane: (ctx, x, y, w, h) => {
+    ctx.save(); ctx.translate(x, y);
+    ctx.fillStyle = '#757575';
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(w, 0); ctx.lineTo(w/2, h); ctx.fill();
+    ctx.fillStyle = '#ff5252'; ctx.beginPath(); ctx.arc(w/2, h/3, w/6, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  },
+  virus: (ctx, x, y, w, h) => {
+    ctx.save(); ctx.translate(x+w/2, y+h/2);
+    ctx.fillStyle = '#8bc34a'; ctx.beginPath(); ctx.arc(0, 0, w/3, 0, Math.PI*2); ctx.fill();
+    for(let i=0; i<8; i++) {
+      let a = (Math.PI*2/8) * i + Date.now()/500;
+      ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(Math.cos(a)*w/2, Math.sin(a)*h/2);
+      ctx.lineWidth=3; ctx.strokeStyle='#558b2f'; ctx.stroke();
+      ctx.beginPath(); ctx.arc(Math.cos(a)*w/2, Math.sin(a)*h/2, w/8, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(-w/8, -h/8, w/10, 0, Math.PI*2); ctx.arc(w/8, -h/8, w/10, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#000'; ctx.beginPath(); ctx.arc(-w/8, -h/8, w/20, 0, Math.PI*2); ctx.arc(w/8, -h/8, w/20, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  },
+  bullet: (ctx, x, y, w, h) => {
+    ctx.fillStyle = '#00e5ff';
+    ctx.beginPath(); ctx.ellipse(x+w/2, y+h/2, w/2, h/2, 0, 0, Math.PI*2); ctx.fill();
+    ctx.shadowBlur = 10; ctx.shadowColor = ctx.fillStyle; ctx.fill(); ctx.shadowBlur = 0;
+  },
+  powerup: (ctx, x, y, w, h) => {
+    ctx.save(); ctx.translate(x+w/2, y+h/2);
+    ctx.fillStyle = '#00e5ff';
+    ctx.beginPath(); ctx.arc(0, 0, w/2, 0, Math.PI*2); ctx.fill();
+    ctx.shadowBlur = 10; ctx.shadowColor = '#00e5ff'; ctx.fill(); ctx.shadowBlur = 0;
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = '#000'; ctx.font = 'bold 20px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('P', 0, 0);
+    ctx.restore();
+  }
+};
+
+class Entity {
+  constructor(x, y, w, h) { this.x=x; this.y=y; this.w=w; this.h=h; this.vx=0; this.vy=0; }
+  update(dt) { this.x += this.vx * dt; this.y += this.vy * dt; }
+  rect() { return {x:this.x, y:this.y, w:this.w, h:this.h}; }
+}
+function AABB(r1, r2) { return r1.x < r2.x + r2.w && r1.x + r1.w > r2.x && r1.y < r2.y + r2.h && r1.y + r1.h > r2.y; }
+
+class PlayerGame {
+  constructor(id, container, bank, inputMap) {
+    this.id = id; this.name = pilotNames[id - 1] || `Pilot ${id}`; this.container = container; this.bank = [...bank]; this.inputMap = inputMap;
+    this.canvas = document.createElement('canvas');
+    this.ctx = this.canvas.getContext('2d', {alpha: false});
+    this.container.appendChild(this.canvas);
+    
+    this.hud = document.createElement('div'); this.hud.className = 'hud'; this.container.appendChild(this.hud);
+    this.qOverlay = document.createElement('div'); this.qOverlay.className = 'question-overlay'; this.container.appendChild(this.qOverlay);
+    this.fOverlay = document.createElement('div'); this.fOverlay.className = 'feedback-overlay'; this.container.appendChild(this.fOverlay);
+    
+    this.resetState(); this.resize();
+  }
+  
+  resetState() {
+    this.w = this.canvas.width; this.h = this.canvas.height;
+    this.player = new Entity(this.w/2 - 20, this.h - 80, 40, 40);
+    this.hp = 100; this.shield = 0; this.score = 0; this.combo = 0; this.bestCombo = 0;
+    this.stats = { correct:0, wrong:0, killed:0 };
+    this.bullets = []; this.enemies = []; this.particles = []; this.powerups = [];
+    this.mission = 1; this.waveTimer = 0; this.bgY = 0;
+    this.currentQuestion = null; this.qTimer = 0;
+    this.state = 'PLAYING';
+    this.fireTimer = 0;
+    this.weaponLevel = 1;
+    
+    let m = CONFIG.difficulty === 'hard' ? 1.5 : CONFIG.difficulty === 'easy' ? 0.7 : 1;
+    this.enemySpeedMult = m; this.spawnRate = 1000 / m; this.lastSpawn = 0;
+  }
+  
+  resize() {
+    this.canvas.width = this.container.clientWidth; this.canvas.height = this.container.clientHeight;
+    this.w = this.canvas.width; this.h = this.canvas.height;
+    if(this.player.y > this.h) this.player.y = this.h - 60;
+  }
+  
+  update(dt) {
+    if(this.state === 'GAMEOVER' || this.state === 'VICTORY') return;
+    
+    for(let i=this.particles.length-1; i>=0; i--) {
+      let p = this.particles[i];
+      p.x += p.vx*dt; p.y += p.vy*dt; p.life -= dt;
+      if(p.life <= 0) this.particles.splice(i, 1);
+    }
+    
+    if (this.state === 'QUESTION') {
+      this.qTimer -= dt;
+      let timerEl = document.getElementById(`timer-${this.id}`);
+      if (timerEl) {
+        timerEl.innerText = Math.ceil(this.qTimer);
+        if (this.qTimer <= 5) timerEl.classList.add('warning');
+      }
+      if (this.qTimer <= 0) {
+        this.handleAnswer(-1);
+      }
+      return;
+    }
+
+    if (this.state === 'FEEDBACK') return; 
+
+    this.bgY += 50 * dt; if(this.bgY > this.h) this.bgY -= this.h;
+    this.waveTimer += dt;
+    
+    let speed = 250 * dt;
+    let keys = window.KEYS || {};
+    let touch = window.TOUCH || {x:0, y:0, fire:false};
+    let isP1 = this.id === 1;
+    
+    let dx = 0, dy = 0;
+    if(keys[this.inputMap.left]) dx -= speed;
+    if(keys[this.inputMap.right]) dx += speed;
+    if(keys[this.inputMap.up]) dy -= speed;
+    if(keys[this.inputMap.down]) dy += speed;
+    
+    if(isP1 && touch.active) { dx += touch.x * speed; dy += touch.y * speed; }
+    
+    this.player.x += dx; this.player.y += dy;
+    
+    if(this.player.x < 0) this.player.x = 0;
+    if(this.player.x > this.w - this.player.w) this.player.x = this.w - this.player.w;
+    if(this.player.y < 0) this.player.y = 0;
+    if(this.player.y > this.h - this.player.h) this.player.y = this.h - this.player.h;
+    
+    this.fireTimer -= dt;
+    let wantFire = keys[this.inputMap.fire] || (isP1 && touch.fire);
+    let autoFireActive = CONFIG.autoFire;
+    if ((wantFire || autoFireActive) && this.fireTimer <= 0) {
+      this.fireTimer = 0.2; SFX.shoot();
+      let px = this.player.x + this.player.w/2;
+      let py = this.player.y - 10;
+      let speed = -400;
+      
+      const spawnBullet = (dx, vx) => {
+        let b = new Entity(px + dx - 4, py, 8, 16);
+        b.vy = speed; b.vx = vx;
+        this.bullets.push(b);
+      };
+
+      if (this.weaponLevel === 1) { spawnBullet(0, 0); }
+      else if (this.weaponLevel === 2) { spawnBullet(-10, 0); spawnBullet(10, 0); }
+      else if (this.weaponLevel === 3) { spawnBullet(0, 0); spawnBullet(-15, -50); spawnBullet(15, 50); }
+      else if (this.weaponLevel === 4) { spawnBullet(-10, 0); spawnBullet(10, 0); spawnBullet(-20, -100); spawnBullet(20, 100); }
+      else { spawnBullet(0, 0); spawnBullet(-15, -50); spawnBullet(15, 50); spawnBullet(-30, -150); spawnBullet(30, 150); }
+    }
+
+    for(let i=this.bullets.length-1; i>=0; i--) {
+      let b = this.bullets[i]; b.update(dt);
+      if(b.y < -20 || b.y > this.h + 20) this.bullets.splice(i, 1);
+    }
+
+    this.lastSpawn -= dt*1000;
+    if(this.lastSpawn <= 0) {
+      this.lastSpawn = this.spawnRate + Math.random()*this.spawnRate;
+      let ew = 40, eh = 40;
+      let ex = Math.random()*(this.w - ew);
+      let e = new Entity(ex, -50, ew, eh);
+      e.vy = (100 + Math.random()*100) * this.enemySpeedMult;
+      e.type = Math.random() > 0.5 ? 'plane' : 'virus';
+      this.enemies.push(e);
+    }
+
+    if(this.waveTimer > 15 && this.bank.length > 0) {
+      this.startQuestionMode();
+    }
+
+    for(let i=this.enemies.length-1; i>=0; i--) {
+      let e = this.enemies[i]; e.update(dt);
+      if(e.y > this.h + 20) this.enemies.splice(i, 1);
+    }
+
+    for(let i=this.bullets.length-1; i>=0; i--) {
+      let b = this.bullets[i];
+      for(let j=this.enemies.length-1; j>=0; j--) {
+        let e = this.enemies[j];
+        if(AABB(b.rect(), e.rect())) {
+          this.explode(e.x+e.w/2, e.y+e.h/2, '#ff9800');
+          
+          if(Math.random() < 0.15) {
+             let p = new Entity(e.x + e.w/2 - 15, e.y + e.h/2 - 15, 30, 30);
+             p.vy = 80;
+             this.powerups.push(p);
+          }
+          
+          this.enemies.splice(j, 1);
+          this.bullets.splice(i, 1);
+          this.score += 10; this.stats.killed++;
+          SFX.boom(); break;
+        }
+      }
+    }
+
+    for(let i=this.powerups.length-1; i>=0; i--) {
+      let p = this.powerups[i]; p.update(dt);
+      if(p.y > this.h + 20) { this.powerups.splice(i, 1); continue; }
+      
+      let pr = this.player.rect();
+      if(AABB(pr, p.rect())) {
+        this.weaponLevel = Math.min(this.weaponLevel + 1, 5);
+        this.score += 50;
+        if(SFX.powerup) SFX.powerup();
+        this.powerups.splice(i, 1);
+      }
+    }
+
+    let pr = this.player.rect();
+    for(let i=this.enemies.length-1; i>=0; i--) {
+      let e = this.enemies[i];
+      if(AABB(pr, e.rect())) {
+        this.takeDamage(10);
+        this.explode(e.x+e.w/2, e.y+e.h/2, '#ff0000');
+        this.enemies.splice(i, 1); SFX.hit();
+      }
+    }
+  }
+
+  draw() {
+    let ctx = this.ctx;
+    let grad = ctx.createLinearGradient(0,0,0,this.h);
+    let colors = [['#81d4fa', '#29b6f6'], ['#90caf9', '#1976d2'], ['#ffcc80', '#ef6c00'], ['#bcaaa4', '#6d4c41'], ['#a5d6a7', '#2e7d32']];
+    let cIdx = Math.min(this.mission-1, 4);
+    grad.addColorStop(0, colors[cIdx][0]); grad.addColorStop(1, colors[cIdx][1]);
+    ctx.fillStyle = grad; ctx.fillRect(0, 0, this.w, this.h);
+    
+    ctx.fillStyle = 'rgba(255,255,255,0.2)';
+    for(let i=0; i<3; i++) {
+      ctx.beginPath(); ctx.arc((this.w/3)*i + 30, (this.bgY + i*150)%this.h, 40, 0, Math.PI*2); ctx.fill();
+    }
+
+    this.particles.forEach(p => {
+      ctx.fillStyle = p.c; ctx.globalAlpha = p.life/p.maxLife;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+
+    this.enemies.forEach(e => {
+      if(e.type === 'plane') GFX.enemyPlane(ctx, e.x, e.y, e.w, e.h);
+      else GFX.virus(ctx, e.x, e.y, e.w, e.h);
+    });
+
+    this.powerups.forEach(p => GFX.powerup(ctx, p.x, p.y, p.w, p.h));
+
+    this.bullets.forEach(b => GFX.bullet(ctx, b.x, b.y, b.w, b.h));
+
+    if (this.state !== 'GAMEOVER') {
+      GFX.plane(ctx, this.player.x, this.player.y, this.player.w, this.player.h, this.id===1?'#2196f3':(this.id===2?'#f44336':'#4caf50'), this.state !== 'QUESTION' && this.state !== 'FEEDBACK');
+    }
+
+    let hStr = `${this.name} | ❤️ ${this.hp} | ⭐ ${this.score} | Lvl ${this.weaponLevel}`;
+    if(this.combo > 1) hStr += ` | 🔥 x${this.combo}`;
+    this.hud.innerText = hStr;
+  }
+
+  explode(x, y, color) {
+    for(let i=0; i<15; i++) {
+      let a = Math.random()*Math.PI*2; let s = 50+Math.random()*150;
+      this.particles.push({x:x, y:y, vx:Math.cos(a)*s, vy:Math.sin(a)*s, life:0.5, maxLife:0.5, r:2+Math.random()*4, c:color});
+    }
+  }
+  
+  takeDamage(amt) {
+    this.hp -= amt; this.combo = 0;
+    this.weaponLevel = Math.max(1, this.weaponLevel - 1); 
+    if(this.hp <= 0) { this.hp = 0; this.endGame(false); }
+  }
+
+  startQuestionMode() {
+    this.state = 'QUESTION'; this.waveTimer = 0;
+    this.currentQuestion = this.bank.pop();
+    this.qTimer = CONFIG.qDuration;
+    
+    let optsHtml = '';
+    const labels = ['A', 'B', 'C', 'D'];
+    let pid = this.id - 1;
+    
+    for(let i=0; i<4; i++) {
+      optsHtml += `<button class="q-btn" onclick="gameState.players[${pid}].handleAnswer(${i})">${labels[i]}. ${this.currentQuestion.options[i]}</button>`;
+    }
+
+    this.qOverlay.innerHTML = `
+      <div style="color:#ff9800; font-size:1.2rem; margin-bottom:5px;">PERTANYAAN MISI ${this.mission}</div>
+      <div class="q-instruction">Pilih jawaban yang tepat sebelum waktu habis!</div>
+      <div class="q-timer" id="timer-${this.id}">${this.qTimer}</div>
+      <div style="font-size:1.1rem; margin-bottom:10px; line-height:1.4;">${this.currentQuestion.q}</div>
+      <div class="q-options">${optsHtml}</div>
+    `;
+    this.qOverlay.style.display = 'block';
+  }
+
+  handleAnswer(idx) {
+    this.state = 'FEEDBACK';
+    this.qOverlay.style.display = 'none';
+    
+    let isCorrect = (idx === this.currentQuestion.correct);
+    let isTimeout = (idx === -1);
+    
+    this.fOverlay.className = `feedback-overlay ${isCorrect ? 'correct' : 'wrong'}`;
+    let titleText = isCorrect ? '✓ BENAR!' : (isTimeout ? '⌛ WAKTU HABIS!' : '✕ BELUM TEPAT!');
+    
+    this.fOverlay.innerHTML = `<div class="feedback-title">${titleText}</div>
+      <div class="feedback-text">${this.currentQuestion.exp}</div>`;
+    this.fOverlay.style.display = 'block';
+
+    if(isCorrect) {
+      SFX.correct();
+      this.combo++; if(this.combo > this.bestCombo) this.bestCombo = this.combo;
+      let multiplier = this.combo >= 5 ? 2 : (this.combo >= 3 ? 1.5 : (this.combo >= 2 ? 1.2 : 1));
+      this.score += Math.floor(100 * multiplier);
+      this.stats.correct++;
+      this.explode(this.player.x+this.player.w/2, this.player.y, '#4caf50');
+    } else {
+      SFX.wrong();
+      this.combo = 0; this.takeDamage(10);
+      this.stats.wrong++;
+    }
+
+    setTimeout(() => {
+      this.fOverlay.style.display = 'none';
+      if(this.hp > 0) {
+        this.mission++;
+        if(this.mission > 5 || this.bank.length === 0) {
+          this.endGame(true);
+        } else {
+          this.state = 'PLAYING';
+          this.enemySpeedMult += 0.1;
+        }
+      }
+    }, 3000);
+  }
+
+  endGame(isVictory) {
+    this.state = isVictory ? 'VICTORY' : 'GAMEOVER';
+    this.qOverlay.style.display = 'none'; this.fOverlay.style.display = 'none';
+    if(isVictory) SFX.correct(); else SFX.boom();
+    
+    if(gameState.players.every(p => p.state === 'GAMEOVER' || p.state === 'VICTORY')) {
+      setTimeout(() => showMissionReport(), 1000);
+    }
+  }
+}
+
+window.KEYS = {}; window.TOUCH = {x:0, y:0, fire:false, active:false};
+document.addEventListener('keydown', e => window.KEYS[e.code]=true);
+document.addEventListener('keyup', e => window.KEYS[e.code]=false);
+
+function setupTouch() {
+  const joyArea = document.getElementById('joy-area');
+  const joyKnob = document.getElementById('joy-knob');
+  const btnFire = document.getElementById('btn-fire');
+  let joyActive = false, jcx=0, jcy=0, maxR=40;
+
+  joyArea.addEventListener('pointerdown', e => {
+    joyActive = true; window.TOUCH.active = true;
+    let rect = joyArea.getBoundingClientRect();
+    jcx = rect.left + rect.width/2; jcy = rect.top + rect.height/2;
+    updateJoy(e.clientX, e.clientY);
+  });
+  document.addEventListener('pointermove', e => { if(joyActive) updateJoy(e.clientX, e.clientY); });
+  document.addEventListener('pointerup', e => { joyActive = false; window.TOUCH.active = false; joyKnob.style.transform = `translate(0px, 0px)`; window.TOUCH.x=0; window.TOUCH.y=0; });
+
+  function updateJoy(cx, cy) {
+    let dx = cx - jcx; let dy = cy - jcy;
+    let dist = Math.sqrt(dx*dx + dy*dy);
+    if(dist > maxR) { dx = (dx/dist)*maxR; dy = (dy/dist)*maxR; }
+    joyKnob.style.transform = `translate(${dx}px, ${dy}px)`;
+    window.TOUCH.x = dx / maxR; window.TOUCH.y = dy / maxR;
+  }
+  
+  btnFire.addEventListener('pointerdown', () => window.TOUCH.fire = true);
+  btnFire.addEventListener('pointerup', () => window.TOUCH.fire = false);
+  btnFire.addEventListener('pointerleave', () => window.TOUCH.fire = false);
+}
+
+let pendingPlayerCount = 1;
+let pilotNames = [];
+
+function startGame(playerCount) {
+  pendingPlayerCount = playerCount;
+  document.getElementById('pilot-two-fields').style.display = playerCount > 1 ? 'block' : 'none';
+  document.getElementById('pilot-one-name').value = '';
+  document.getElementById('pilot-two-name').value = '';
+  showScreen('screen-names');
+  setTimeout(() => document.getElementById('pilot-one-name').focus(), 50);
+}
+
+function beginNamedGame(event) {
+  event.preventDefault();
+  pilotNames = [document.getElementById('pilot-one-name').value.trim() || 'Pilot 1'];
+  if (pendingPlayerCount > 1) pilotNames.push(document.getElementById('pilot-two-name').value.trim() || 'Pilot 2');
+  beginGame(pendingPlayerCount);
+}
+
+function beginGame(playerCount) {
+  initAudio();
+  gameState.mode = playerCount;
+  gameState.isPaused = false;
+  gameState.players = [];
+  
+  let grid = document.getElementById('game-grid');
+  grid.innerHTML = '';
+  if(playerCount === 1) grid.style.gridTemplateColumns = '1fr';
+  else if(playerCount === 2) grid.style.gridTemplateColumns = window.innerWidth > window.innerHeight ? '1fr 1fr' : '1fr';
+  else grid.style.gridTemplateColumns = '1fr 1fr';
+
+  let touchControls = document.getElementById('touch-controls');
+  touchControls.style.display = (playerCount === 1 && CONFIG.isMobile) ? 'block' : 'none';
+
+  const inputs = [
+    {up:'KeyW', down:'KeyS', left:'KeyA', right:'KeyD', fire:'Space'},
+    {up:'ArrowUp', down:'ArrowDown', left:'ArrowLeft', right:'ArrowRight', fire:'Enter'},
+    {up:'KeyI', down:'KeyK', left:'KeyJ', right:'KeyL', fire:'ShiftRight'},
+    {up:'Numpad8', down:'Numpad5', left:'Numpad4', right:'Numpad6', fire:'Numpad0'}
+  ];
+
+  for(let i=0; i<playerCount; i++) {
+    let cell = document.createElement('div'); cell.className = 'game-cell';
+    grid.appendChild(cell);
+    // Setiap pilot mendapat bank soal sendiri dengan urutan acak yang berbeda.
+    let playerBank = getQuestionBank(parseInt(CONFIG.maxQuestions));
+    gameState.players.push(new PlayerGame(i+1, cell, playerBank, inputs[i]));
+  }
+
+  showScreen('screen-game');
+  document.getElementById('btn-pause').style.display = 'block';
+  document.getElementById('btn-home').style.display = 'block';
+  
+  gameState.lastTime = performance.now();
+  if(gameState.animationFrame) cancelAnimationFrame(gameState.animationFrame);
+  gameState.animationFrame = requestAnimationFrame(gameLoop);
+}
+
+function gameLoop(timestamp) {
+  if(!gameState.isPaused) {
+    let dt = (timestamp - gameState.lastTime) / 1000;
+    if(dt > 0.1) dt = 0.1;
+    gameState.players.forEach(p => { p.update(dt); p.draw(); });
+  }
+  gameState.lastTime = timestamp;
+  gameState.animationFrame = requestAnimationFrame(gameLoop);
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(id !== 'screen-game') {
+    document.getElementById('btn-pause').style.display = 'none';
+    document.getElementById('btn-home').style.display = 'none';
+  }
+}
+
+function closeHelp() {
+  let prevScreen = document.getElementById('btn-pause').style.display === 'block' ? 'screen-game' : 'screen-menu';
+  showScreen(prevScreen);
+  if(prevScreen === 'screen-game') {
+    document.getElementById('btn-pause').style.display = 'block';
+    document.getElementById('btn-home').style.display = 'block';
+  }
+}
+
+function showSettings(context) {
+  settingsContext = context;
+  if(context === 'pause') {
+    document.getElementById('screen-pause').style.display = 'none';
+  }
+  showScreen('screen-settings');
+}
+
+function saveSettings() {
+  CONFIG.difficulty = document.getElementById('cfg-diff').value;
+  CONFIG.autoFire = document.getElementById('cfg-auto').value === 'true';
+  CONFIG.maxQuestions = parseInt(document.getElementById('cfg-qnum').value);
+  CONFIG.qDuration = parseInt(document.getElementById('cfg-qtimer').value);
+  try { localStorage.setItem('ar_config', JSON.stringify(CONFIG)); } catch(e) {}
+  
+  if (settingsContext === 'pause') {
+    document.getElementById('screen-settings').classList.remove('active');
+    document.getElementById('screen-game').classList.add('active');
+    document.getElementById('screen-pause').style.display = 'flex';
+  } else {
+    showScreen('screen-menu');
+  }
+}
+
+function togglePause() {
+  gameState.isPaused = !gameState.isPaused;
+  if(gameState.isPaused) {
+    document.getElementById('screen-pause').style.display = 'flex';
+  } else {
+    document.getElementById('screen-pause').style.display = 'none';
+    gameState.lastTime = performance.now();
+  }
+}
+
+function returnToStartScreen() {
+  gameState.isPaused = false;
+  document.getElementById('screen-pause').style.display = 'none';
+  document.getElementById('btn-pause').style.display = 'none';
+  document.getElementById('btn-home').style.display = 'none';
+  if(gameState.animationFrame) cancelAnimationFrame(gameState.animationFrame);
+  showScreen('screen-start');
+}
+
+function showMissionReport() {
+  if(gameState.animationFrame) cancelAnimationFrame(gameState.animationFrame);
+  document.getElementById('btn-pause').style.display = 'none';
+  document.getElementById('btn-home').style.display = 'none';
+  
+  let rHtml = '';
+  gameState.players.forEach(p => {
+    let acc = (p.stats.correct + p.stats.wrong) > 0 ? Math.round(p.stats.correct/(p.stats.correct+p.stats.wrong)*100) : 0;
+    rHtml += `<div style="border-bottom:2px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+      <h3 style="color:${p.id===1?'#0277bd':'#e65100'}">${p.name} ${p.hp>0 ? '🎉 SURVIVED' : '💀 FAILED'}</h3>
+      <b>Skor:</b> ${p.score} <br>
+      <b>Benar:</b> ${p.stats.correct} | <b>Salah:</b> ${p.stats.wrong} <br>
+      <b>Akurasi:</b> ${acc}% <br>
+      <b>Best Combo:</b> x${p.bestCombo}
+    </div>`;
+  });
+  document.getElementById('report-stats').innerHTML = rHtml;
+  showScreen('screen-report');
+}
+
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(err => {});
+  } else {
+    if (document.exitFullscreen) document.exitFullscreen();
+  }
+}
+
+function loadSettings() {
+  try {
+    let saved = localStorage.getItem('ar_config');
+    if(saved) {
+      CONFIG = {...CONFIG, ...JSON.parse(saved)};
+      document.getElementById('cfg-diff').value = CONFIG.difficulty;
+      document.getElementById('cfg-auto').value = CONFIG.autoFire ? 'true' : 'false';
+      document.getElementById('cfg-qnum').value = CONFIG.maxQuestions.toString();
+      document.getElementById('cfg-qtimer').value = CONFIG.qDuration ? CONFIG.qDuration.toString() : '15';
+    }
+  } catch(e) {}
+}
+
+window.addEventListener('resize', () => {
+  if(gameState.players) gameState.players.forEach(p => p.resize());
+});
+
+window.onload = () => {
+  loadSettings();
+  setupTouch();
+};
+</script>
+ 
+</body></html>
