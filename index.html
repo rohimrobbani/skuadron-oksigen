@@ -119,27 +119,27 @@ canvas { display: block; width: 100%; height: 100%; }
 #touch-controls.solo .joy-base.p1 .joy-stick { width: 60px; height: 60px; }
 #touch-controls.solo .action-btn.p1 { right: 40px; bottom: 50px; width: 100px; height: 100px; font-size: 2.5rem; }
 
-/* Layout Kontrol - Mode Duel */
-#touch-controls.duel .joy-base.p1 { left: 15px; bottom: 15px; width: 100px; height: 100px; }
+/* Layout Kontrol - Mode Duel (Landscape 2 Kolom) */
+#touch-controls.duel .joy-base.p1 { left: 4vw; bottom: 20px; width: 100px; height: 100px; }
 #touch-controls.duel .joy-base.p1 .joy-stick { width: 45px; height: 45px; }
-#touch-controls.duel .action-btn.p1 { left: 130px; bottom: 25px; width: 65px; height: 65px; font-size: 1.5rem; }
+#touch-controls.duel .action-btn.p1 { left: 28vw; bottom: 35px; width: 65px; height: 65px; font-size: 1.5rem; }
 
-#touch-controls.duel .joy-base.p2 { right: 15px; bottom: 15px; width: 100px; height: 100px; }
+#touch-controls.duel .joy-base.p2 { left: 54vw; bottom: 20px; width: 100px; height: 100px; }
 #touch-controls.duel .joy-base.p2 .joy-stick { width: 45px; height: 45px; }
-#touch-controls.duel .action-btn.p2 { right: 130px; bottom: 25px; width: 65px; height: 65px; font-size: 1.5rem; }
+#touch-controls.duel .action-btn.p2 { left: 78vw; bottom: 35px; width: 65px; height: 65px; font-size: 1.5rem; }
 
-/* Layout Kontrol - Mode Trio */
-#touch-controls.trio .joy-base.p1 { left: 10px; bottom: 10px; width: 80px; height: 80px; }
+/* Layout Kontrol - Mode Trio (Landscape 3 Kolom) */
+#touch-controls.trio .joy-base.p1 { left: 2vw; bottom: 20px; width: 75px; height: 75px; }
 #touch-controls.trio .joy-base.p1 .joy-stick { width: 35px; height: 35px; }
-#touch-controls.trio .action-btn.p1 { left: 100px; bottom: 20px; width: 50px; height: 50px; font-size: 1.2rem; }
+#touch-controls.trio .action-btn.p1 { left: 20vw; bottom: 30px; width: 50px; height: 50px; font-size: 1.2rem; }
 
-#touch-controls.trio .joy-base.p2 { right: 10px; bottom: 10px; width: 80px; height: 80px; }
+#touch-controls.trio .joy-base.p2 { left: 35.3vw; bottom: 20px; width: 75px; height: 75px; }
 #touch-controls.trio .joy-base.p2 .joy-stick { width: 35px; height: 35px; }
-#touch-controls.trio .action-btn.p2 { right: 100px; bottom: 20px; width: 50px; height: 50px; font-size: 1.2rem; }
+#touch-controls.trio .action-btn.p2 { left: 53.3vw; bottom: 30px; width: 50px; height: 50px; font-size: 1.2rem; }
 
-#touch-controls.trio .joy-base.p3 { left: 50%; bottom: 10px; transform: translateX(-50%); width: 80px; height: 80px; }
+#touch-controls.trio .joy-base.p3 { left: 68.6vw; bottom: 20px; width: 75px; height: 75px; }
 #touch-controls.trio .joy-base.p3 .joy-stick { width: 35px; height: 35px; }
-#touch-controls.trio .action-btn.p3 { left: 50%; bottom: 100px; transform: translateX(-50%); width: 50px; height: 50px; font-size: 1.2rem; }
+#touch-controls.trio .action-btn.p3 { left: 86.6vw; bottom: 30px; width: 50px; height: 50px; font-size: 1.2rem; }
 
 .settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: left; font-size: 1rem; }
 .settings-grid label { font-weight: bold; }
@@ -153,20 +153,31 @@ canvas { display: block; width: 100%; height: 100%; }
 @media (orientation: portrait) {
   .q-options { grid-template-columns: 1fr; gap: 10px; }
   
-  #touch-controls.solo .joy-base.p1 { width: 120px; height: 120px; left: 20px; bottom: 20px; }
+  #touch-controls.solo .joy-base.p1 { width: 120px; height: 120px; left: 20px; bottom: 20px; top: auto; right: auto; }
   #touch-controls.solo .joy-base.p1 .joy-stick { width: 55px; height: 55px; }
-  #touch-controls.solo .action-btn.p1 { width: 85px; height: 85px; right: 20px; bottom: 35px; font-size: 2rem;}
+  #touch-controls.solo .action-btn.p1 { width: 85px; height: 85px; right: 20px; bottom: 35px; left: auto; top: auto; font-size: 2rem;}
   
-  #touch-controls.duel .joy-base { width: 80px; height: 80px; }
+  /* Duel Portrait (2 Baris) */
+  #touch-controls.duel .joy-base { width: 80px; height: 80px; left: 5vw; }
   #touch-controls.duel .joy-stick { width: 35px; height: 35px; }
-  #touch-controls.duel .action-btn.p1 { left: 110px; width: 55px; height: 55px; }
-  #touch-controls.duel .action-btn.p2 { right: 110px; width: 55px; height: 55px; }
+  #touch-controls.duel .action-btn { width: 55px; height: 55px; right: 5vw; left: auto; }
+  
+  #touch-controls.duel .joy-base.p1 { top: 35vh; bottom: auto; }
+  #touch-controls.duel .action-btn.p1 { top: 37vh; bottom: auto; }
+  #touch-controls.duel .joy-base.p2 { top: 85vh; bottom: auto; }
+  #touch-controls.duel .action-btn.p2 { top: 87vh; bottom: auto; }
 
-  #touch-controls.trio .joy-base { width: 60px; height: 60px; }
-  #touch-controls.trio .joy-stick { width: 25px; height: 25px; }
-  #touch-controls.trio .action-btn.p1 { left: 80px; width: 45px; height: 45px; }
-  #touch-controls.trio .action-btn.p2 { right: 80px; width: 45px; height: 45px; }
-  #touch-controls.trio .action-btn.p3 { bottom: 80px; width: 45px; height: 45px; }
+  /* Trio Portrait (3 Baris) */
+  #touch-controls.trio .joy-base { width: 70px; height: 70px; left: 5vw; transform: none; }
+  #touch-controls.trio .joy-stick { width: 30px; height: 30px; }
+  #touch-controls.trio .action-btn { width: 50px; height: 50px; right: 5vw; left: auto; transform: none; }
+  
+  #touch-controls.trio .joy-base.p1 { top: 22vh; bottom: auto; }
+  #touch-controls.trio .action-btn.p1 { top: 23vh; bottom: auto; }
+  #touch-controls.trio .joy-base.p2 { top: 55vh; bottom: auto; }
+  #touch-controls.trio .action-btn.p2 { top: 56vh; bottom: auto; }
+  #touch-controls.trio .joy-base.p3 { top: 88vh; bottom: auto; }
+  #touch-controls.trio .action-btn.p3 { top: 89vh; bottom: auto; }
 }
 </style>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
@@ -846,9 +857,20 @@ function beginGame(playerCount) {
   
   let grid = document.getElementById('game-grid');
   grid.innerHTML = '';
-  if(playerCount === 1) grid.style.gridTemplateColumns = '1fr';
-  else if(playerCount === 2) grid.style.gridTemplateColumns = window.innerWidth > window.innerHeight ? '1fr 1fr' : '1fr';
-  else grid.style.gridTemplateColumns = window.innerWidth > window.innerHeight ? '1fr 1fr 1fr' : '1fr';
+  let isLandscape = window.innerWidth > window.innerHeight;
+  
+  if(playerCount === 1) {
+    grid.style.gridTemplateColumns = '1fr';
+    grid.style.gridTemplateRows = '1fr';
+  }
+  else if(playerCount === 2) {
+    grid.style.gridTemplateColumns = isLandscape ? '1fr 1fr' : '1fr';
+    grid.style.gridTemplateRows = isLandscape ? '1fr' : '1fr 1fr';
+  }
+  else {
+    grid.style.gridTemplateColumns = isLandscape ? '1fr 1fr 1fr' : '1fr';
+    grid.style.gridTemplateRows = isLandscape ? '1fr' : '1fr 1fr 1fr';
+  }
 
   let touchControls = document.getElementById('touch-controls');
   touchControls.className = (playerCount === 1) ? 'solo' : (playerCount === 2 ? 'duel' : 'trio');
@@ -1004,6 +1026,17 @@ function loadSettings() {
 }
 
 window.addEventListener('resize', () => {
+  let grid = document.getElementById('game-grid');
+  if(grid && gameState.mode > 1) {
+    let isLandscape = window.innerWidth > window.innerHeight;
+    if(gameState.mode === 2) {
+      grid.style.gridTemplateColumns = isLandscape ? '1fr 1fr' : '1fr';
+      grid.style.gridTemplateRows = isLandscape ? '1fr' : '1fr 1fr';
+    } else {
+      grid.style.gridTemplateColumns = isLandscape ? '1fr 1fr 1fr' : '1fr';
+      grid.style.gridTemplateRows = isLandscape ? '1fr' : '1fr 1fr 1fr';
+    }
+  }
   if(gameState.players) gameState.players.forEach(p => p.resize());
 });
 
